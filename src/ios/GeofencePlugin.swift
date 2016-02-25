@@ -147,11 +147,15 @@ func log(message: String){
 
     func evaluateJs (script: String) {
         if webView != nil {
+            webView!.stringByEvaluatingJavaScriptFromString(script)
+            /* Doesn't compile in xcode 7.2.1
+            *
             if let uiWebView = webView as? UIWebView {
                 uiWebView.stringByEvaluatingJavaScriptFromString(script)
             } else if let wkWebView = webView as? WKWebView {
                 wkWebView.evaluateJavaScript(script, completionHandler: nil)
             }
+            */
         } else {
             log("webView is null")
         }
